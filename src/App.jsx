@@ -24,7 +24,7 @@ function App() {
       <Education />
       <Contact />
       <Footer />
-      <AdminPanel />
+     <AdminPanel />
     </div>
   )
 }

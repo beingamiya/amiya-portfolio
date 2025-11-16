@@ -3,11 +3,15 @@ import React, { useState, useEffect } from 'react'
 const AdminPanel = () => {
   const [submissions, setSubmissions] = useState([])
   const [isVisible, setIsVisible] = useState(false)
+  const [adminEnabled, setAdminEnabled] = useState(false)
 
   useEffect(() => {
     // Load submissions from localStorage
     const storedSubmissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]')
     setSubmissions(storedSubmissions)
+    const params = new URLSearchParams(window.location.search)
+    const enabled = params.get('admin') === '1' || localStorage.getItem('adminMode') === 'true'
+    setAdminEnabled(Boolean(enabled))
   }, [])
 
   const clearSubmissions = () => {
@@ -25,8 +29,11 @@ const AdminPanel = () => {
     link.click()
   }
 
-  // Only show admin panel if there are submissions or if explicitly opened
-  if (submissions.length === 0 && !isVisible) {
+  if (!adminEnabled) {
+    return null
+  }
+
+  if (!isVisible) {
     return (
       <button
         onClick={() => setIsVisible(true)}
