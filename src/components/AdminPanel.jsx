@@ -1,4 +1,4 @@
-/* import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const AdminPanel = () => {
   const [submissions, setSubmissions] = useState([])
@@ -96,4 +96,4 @@ const AdminPanel = () => {
   )
 }
 
-export default AdminPanel*/
+export default AdminPanel

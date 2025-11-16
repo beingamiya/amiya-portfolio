@@ -8,7 +8,7 @@ import Experience from './components/Experience'
 import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-/*import AdminPanel from './components/AdminPanel'*/
+import AdminPanel from './components/AdminPanel'
 import './utils/performanceMonitor'
 import './App.css'
 
@@ -24,7 +24,7 @@ function App() {
       <Education />
       <Contact />
       <Footer />
-      {/*<AdminPanel />*/}
+      <AdminPanel />
     </div>
   )
 }

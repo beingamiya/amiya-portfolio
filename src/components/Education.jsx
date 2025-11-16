@@ -33,7 +33,6 @@ const Education = () => {
         "Graduated with hands-on experience in data analysis & computing."
       ]
     }
-    // add more entries here if needed
   ];
 
   // Chunk entries into rows of two so they render side-by-side on md+
@@ -65,16 +64,18 @@ const Education = () => {
                 <div className="w-full">
                   {pair[0] && (
                     <article className="group bg-white/90 backdrop-blur-sm border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-transform transform hover:-translate-y-1">
-                      <header className="flex items-start justify-between">
+                      {/* make header responsive: stack on mobile, row on md+ */}
+                      <header className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
                         <div>
                           <h3 className="text-2xl font-semibold text-gray-900">{pair[0].degree}</h3>
                           <p className="text-sm text-blue-600 font-medium mt-1">{pair[0].school}</p>
                         </div>
 
                         <div className="text-right">
-                          <p className="text-sm text-gray-500">{pair[0].dates}</p>
+                          {/* prevent awkward wrapping on small screens */}
+                          <p className="text-sm text-gray-500 whitespace-nowrap">{pair[0].dates}</p>
                           <span
-                            className={`inline-block mt-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-gradient-to-r ${pair[0].statusGradient}`}
+                            className={`inline-block mt-2 md:mt-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-gradient-to-r ${pair[0].statusGradient}`}
                             aria-hidden="true"
                           >
                             {pair[0].status}
@@ -98,16 +99,16 @@ const Education = () => {
                 <div className="w-full">
                   {pair[1] ? (
                     <article className="group bg-white/90 backdrop-blur-sm border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-transform transform hover:-translate-y-1">
-                      <header className="flex items-start justify-between">
+                      <header className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
                         <div>
                           <h3 className="text-2xl font-semibold text-gray-900">{pair[1].degree}</h3>
                           <p className="text-sm text-blue-600 font-medium mt-1">{pair[1].school}</p>
                         </div>
 
                         <div className="text-right">
-                          <p className="text-sm text-gray-500">{pair[1].dates}</p>
+                          <p className="text-sm text-gray-500 whitespace-nowrap">{pair[1].dates}</p>
                           <span
-                            className={`inline-block mt-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-gradient-to-r ${pair[1].statusGradient}`}
+                            className={`inline-block mt-2 md:mt-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-gradient-to-r ${pair[1].statusGradient}`}
                             aria-hidden="true"
                           >
                             {pair[1].status}
@@ -131,9 +132,10 @@ const Education = () => {
                 </div>
 
                 {/* Timeline marker for this row (center) */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-6 md:top-6">
-                  <div className="w-5 h-5 rounded-full bg-white border-4 border-gray-100 shadow-sm" />
-                </div>
+              <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-6">
+  <div className="w-5 h-5 rounded-full bg-white border-4 border-gray-100 shadow-sm" />
+</div>
+
               </div>
             ))}
           </div>
